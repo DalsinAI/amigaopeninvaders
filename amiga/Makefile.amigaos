@@ -16,11 +16,12 @@ DIR = $(BUILD)/$(NAME)
 CXXSRCS = main collision ending graphics init input interrupt intro logic sound unlock
 OBJS = $(patsubst %,$(BUILD)/obj/%.o,$(CXXSRCS)) $(BUILD)/obj/pmask.o $(BUILD)/obj/amiga_start.o
 
+# libstdc++ (iostream, new) locks through pthreads
 SOFT = -specs=$(A4)/specs/m68k-soft-m68040.specs
 BASE = -noixemul -m68040 $(SOFT) -O2 -fomit-frame-pointer -fno-tree-loop-distribute-patterns -w \
 	-Iamiga -I. -I$(A4)/include
 CXXFLAGS = $(BASE) -std=gnu++98
-LIBS = $(A4OUT)/liballeg.a -lm
+LIBS = $(A4OUT)/liballeg.a -lpthread -lm
 
 all: $(DIR)/$(NAME) package
 
