@@ -134,9 +134,9 @@ void load_data_files()
 	gameisover=oi_load_sfx("gameisover.wav",GAME_IS_OVER_SOUND);
 	
 	cout << "Loading in-game song...\n";
-	gamesong=dumb_load_mod_quick("./data/gamesong.mod");
+	gamesong=dumb_load_mod_quick("data/gamesong.mod");
 		
-	gamefont=load_bitmap_font("./data/arcade_font.pcx",0,0);
+	gamefont=load_bitmap_font("data/arcade_font.pcx",0,0);
 	
 	cout << "Loading highscore file...\n";
 	load_hiscore();
@@ -176,7 +176,7 @@ void load_hiscore()
 	int checksum;
 	
 	#ifndef ALLEGRO_LINUX
-	filepath << "./data/hiscore.dat";
+	filepath << "data/hiscore.dat";
 	#else
 	filepath << getenv("HOME") << "/.openinvaders/hiscore";
 	#endif
@@ -297,7 +297,7 @@ void save_hiscore()
 	int checksum = (totalhiscore*239)-686; //simple, I know!
 	
 	#ifndef ALLEGRO_LINUX
-	filepath << "./data/hiscore.dat";
+	filepath << "data/hiscore.dat";
 	#else
 	filepath << getenv("HOME") << "/.openinvaders";
 	mkdir(filepath.str().c_str(),S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH);
@@ -330,7 +330,7 @@ void load_config()
 	ostringstream filepath;
 	
 	#ifndef ALLEGRO_LINUX
-	filepath << "./data/config.dat";
+	filepath << "data/config.dat";
 	#else
 	filepath << getenv("HOME") << "/.openinvaders";
 	mkdir(filepath.str().c_str(),S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH);
@@ -479,7 +479,7 @@ void save_config()
 	ostringstream filepath;
 		
 	#ifndef ALLEGRO_LINUX
-	filepath << "./data/config.dat";
+	filepath << "data/config.dat";
 	#else
 	filepath << getenv("HOME") << "/.openinvaders";
 	mkdir(filepath.str().c_str(),S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH);
@@ -620,7 +620,7 @@ BITMAP *oi_load_graphic(std::string filename, std::string defsymbol)
 	BITMAP *loaded_graphic;
 	ostringstream filenamebuffer;
 	
-	filenamebuffer << "./data/" << filename;
+	filenamebuffer << "data/" << filename;
 	
 	loaded_graphic=load_bitmap(filenamebuffer.str().c_str(),NULL);
 
@@ -646,7 +646,7 @@ SAMPLE *oi_load_sfx(std::string filename, std::string defsymbol)
 	SAMPLE *loaded_sound;
 	ostringstream filenamebuffer;
 	
-	filenamebuffer << "./data/" << filename;
+	filenamebuffer << "data/" << filename;
 	
 	loaded_sound=load_wav(filenamebuffer.str().c_str());
 

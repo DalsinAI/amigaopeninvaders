@@ -1,0 +1,14 @@
+{
+  "name": "OpenInvaders",
+  "version": "0.3-gfos1",
+  "drawer": "OpenInvaders",
+  "program": "OpenInvaders",
+  "cpu": "68040",
+  "fpu": false,
+  "space": 9000000,
+  "modules": [],
+  "keep": [],
+  "parent": "Work:Games",
+  "badge": "icons/art/openinvaders.png",
+  "script": "Install-OpenInvaders"
+}

@@ -60,7 +60,11 @@ void interrupt_keys()
 	#endif
 	
 	#ifndef ALLEGRO_LINUX
-		string filepath='.';
+#ifdef __amigaos__
+		string filepath="data";
+#else
+		string filepath=".";
+#endif
 	#endif
 
 	if((key[KEY_LCONTROL]||key[KEY_RCONTROL])&&key[KEY_S]&&keyreleased)

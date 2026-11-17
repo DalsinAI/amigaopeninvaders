@@ -74,7 +74,7 @@ enum{alive, dying, dead};
 #define ENDING_SONG PACKAGE_DATA_DIR"/"PACKAGE"/endsong.mod"
 #define HISCORE_SONG PACKAGE_DATA_DIR"/"PACKAGE"/hiscore.mod"
 
-#ifdef ALLEGRO_LINUX
+#if defined(ALLEGRO_LINUX) || defined(__amigaos__)
 #include "headers/pmask.h"
 #else
 #include "../include/pmask.h"
