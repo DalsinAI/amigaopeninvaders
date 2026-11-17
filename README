@@ -1,0 +1,160 @@
+Open Invaders
+(c) 2006-2007 Darryl Lecount/Jamyskis
+
+This game is released under the General Public License Version 2. More details
+can be found in the accompanying license file.
+
+Lead programming, design, sound by Darryl LeCount. Graphics by Amber Adams and 
+Darryl LeCount. This game was written using the Allegro library by Shawn 
+Hargreaves. The code includes elements of the PMASK collision detection library
+by Orz.
+
+PLEASE NOTICE THAT THIS GAME IS STILL IN DEVELOPMENT AND IS NOT CONSIDERED TO BE
+FINISHED OR STABLE!
+
+
+Installation prerequisites
+==========================
+To compile from source, you require:
+
+* Allegro 4.2.1 development libraries
+* DUMB 0.9.3 development libraries
+
+Please note that your Linux distribution may not have a DUMB package complete
+with Allegro support. If you get an error during building that aldumb.h could
+not be found, you'll have to download and build it yourself from
+http://dumb.sourceforge.net. Also, to the best of my knowledge, Allegro 4.2.0
+will *not* work with this game. Sorry.
+
+Under Linux, compiling from source should be as easy as:
+
+./configure
+make
+make install
+
+Make sure you have root access for the last bit. PMASK is included in the 
+archive.
+
+If you prefer to run the precompiled binary version (Linux or Windows), just
+unpack the archive to a folder of your choice and run the open-invaders file
+(under Linux) or Open Invaders.exe (under Windows).
+
+There is also a self-extracting Windows installer, which will install shortcuts
+in the start menu and on the desktop.
+
+
+Instructions
+============
+
+When the title screen first appears, press any key or the first button on your
+joypad/joystick to bring up the title menu. From here you can opt to begin a
+game, see who was responsible for this wonderful game or change the options.
+
+If you decide to change the settings under options, you'll find that you have a
+choice of five difficulty levels and the possibility to adjust the sound effects
+and music. You can also redefine the keyboard controls should you so wish.
+
+By default you use the arrow keys to move left and right, and left shift key to 
+fire. Shoot all the enemies, avoid their shots, kill all invaders to progress to
+the next of 14 levels. Shooting the UFO gives bonus points. The shields provide
+limited amounts of cover. You get an extra life for every 20,000 points. As
+you'll discover from the ending, playing on a harder difficulty level is in
+your best interest.
+
+You can also use a joypad/joystick - if you have two or more plugged in, it is 
+the first one listed in the joystick control panel (Windows) or the device
+located at /dev/js0 or /dev/input/js0 (Linux).
+
+You can return to the title screen by pressing Q (unless redefined). 
+
+If you wish to do an emergency exit from the game (in case the boss is coming)
+you can press CTRL+C. To create a screenshot, press CTRL+S.
+
+The game will generally automatically start in fullscreen mode, unless there is a
+problem with this, in which case it will start in windowed mode. You can force
+either mode by starting the game on the command line with the arguments -w (for
+windowed) or -f (for fullscreen). You can switch between windowed and fullscreen
+modes in-game and on the title screen by pressing CTRL+F, ALT+ENTER or selecting
+the option from the options menu.
+
+To add to the fun, the game has 35 unlockable features. Most are fairly easy to
+unlock (get a certain amount of points, reach a certain level, complete the game
+etc.) but the rest will have you scratching your head for ages to come. Have
+fun! You can see what you have unlocked (and access the features) by going into
+the options menu from the title screen and selecting "unlockables".
+
+
+Tools used in making this game
+==============================
+
+This game was made using 100% free and open-source software (FLOSS):
+Ubuntu Linux, Anjuta, Code::Blocks, GCC/MinGW, the GIMP, Audacity, NSIS,
+Allegro, OpenOffice.org, TileStudio.
+
+
+FAQ
+===
+
+Why this game?
+Because it was fun to make and at the time I thought there was no known clone of
+the original Space Invaders on Linux. I know better now, but it's still good
+fun.
+
+When I run the game in the console, the game reports "corrupted double-linked
+list" when I exit.
+This is a known bug, though I'll be damned if I know what's causing it. It's
+not fatal anyway, and I'll hopefully have it pinned down by the time the game
+goes beta. As I see, the error depends on the version of GCC being used. As of
+8th June 2007, I'm not seeing this anymore, so the 4.x.x series of GCC doesn't
+seem to be experiencing this problem.
+
+The collision detection is iffy.
+Actually the collision detection between the aliens and projectiles is pixel
+perfect. The collision detection between projectiles and shields however relies
+on a series of hacks that have provided the best solution thus far but are not
+perfect. I'm working on it.
+
+The game has 100%/very high CPU usage.
+There are several explanations for this. The first is that I simply haven't got
+used to the concept of CPU yielding in C++. However, the code does contain some
+elementary checking. The problem is that the Linux version of the game does not
+support hardware graphics acceleration and with the 50-60 sprites being thrown
+around at any one time, it's understandable that a 1GHz machine would be the
+absolute minimum. As Windows Allegro does support hardware acceleration, the
+requirements there are a fair bit less. I have tested the game in fullscreen 
+using top in another tty and the game never goes above 71% on my Athlon 2400,
+with Xorg running. It should be stressed that this is not a problem with Linux,
+but with the Linux version of Allegro.
+
+I've found a bug!
+Tell me at the contact details below.
+
+The source code is a bad example of programming.
+First of all, I'm a beginner, so don't berate me too much. That said, there's
+parts of the code I don't like, simply because they feel too much like hacks at
+times. I'll look at this in time.
+
+The game accused me of being a cheater! I didn't do anything.
+Please send me your hiscore or hiscore.dat file. Under Linux this is located in
+.openinvaders in your home directory, under Windows in the game's data
+directory (usually c:\Program Files\Jamyskis\Open Invaders\data) by default.
+
+The game accused me of being a cheater! Why shouldn't I be able to edit my
+highscore file?
+Because I am eventually hoping to have an net-based highscore table, and
+cheaters aren't welcome there.
+
+I didn't get a completion bonus when finishing the game!
+I'm guessing you unlocked level 2 or above and then attempted to start from that
+level. To get a completion bonus you need to begin the game from level 1.
+
+What's the top score you've managed when playing honestly?
+66,300.
+
+
+Contact me
+==========
+
+You can view more of my work at http://www.jamyskis.net
+If you have any questions, feedback, bug reports etc. please forward them to
+darryl@jamyskis.net, my Jabber account at jamyskis@jabber.org or ICQ 213921710.

@@ -1,0 +1,92 @@
+0.01
+====
+First release. Alpha pre-release.
+
+0.05
+====
+Added: breakout loop (CTRL+C)
+Added: screenshot grab function (CTRL+S)
+Added: rudimentary title screen
+Added: Increased resolution to 800x600
+Added: Updated graphics to 256 colours
+Added: Ability to select fullscreen or windowed mode from command line.
+Added: joystick support
+Added: Extra life every 20000 points
+Added: pause function (CTRL+P)
+Added: Added music
+Fixed: Switched to PMASK collision detection library to improve collision detection
+Fixed: Move fire button to left shift from left control because of CTRL+S and CTRL+C issues
+Various other bug fixes
+
+0.06
+====
+Fixed: Disabled music temporarily to allow for Windows compilation.
+
+0.07
+====
+Bug fixes galore, including improved CPU usage.
+Added various backgrounds for game.
+Modified breakout loop so that the game quits cleanly.
+
+0.07.1
+======
+Quick bug fix to allow for proper installation methods and building of Ubuntu packages.
+
+0.08
+====
+Added: Game can now be ended from title screen with CTRL+Q (definitely cleanly)
+Added: basic high-score functionality
+Added: "designed for Linux" logo
+Added: level 3 background (more to come!)
+Optimised: Restructured code so that changes and additions can be made more easily
+Optimised: Restructuring for less reliance on global variables
+Fixed: screengrab function so that screen can be grabbed anywhere (with correct palette)
+Fixed: bug where characters would "jump" after a fade (lose a life or end level)
+Fixed: Game now terminates anywhere with CTRL+C (although perhaps unclean)
+Fixed: bug which allowed only left CTRL key to be used for combinations
+
+0.1
+===
+Added: Projectiles now collide and cancel each other out
+Added: Shields now regenerate when completing a level
+Added: Converted to 16-bit truecolor because new graphics are coming in soon (thanks Amber!)
+Added: Fade sequences rewritten (Allegro's only work in 8-bit mode) and enhanced
+Added: Updated the font (it now looks a lot nicer)
+Added: All 14 level backgrounds now finished (still need graphical makeovers though mostly)
+Added: music (3 tracker MODs from the public domain, not of my own creation)
+Added: ending/credits
+Optimised: Switched to RLE compiled sprites (they're faster)
+Fixed: the scoreboard (no annoying black blocks now)
+Fixed: bug where enemies could disappear off the bottom of the screen if they don't hit the player
+Fixed: bug where shields would disappear a little prematurely when enemies were down below
+Changed: Game speed increased by 15% (due to complaints that the game was too slow)
+
+0.2
+===
+Added: Hiscore anti-cheating (unfortunately scores from version 0.1 no longer work)
+Optimised: File loader code has been streamlined (smaller executable size)
+Fixed: when compiling from source under Linux, the commentator would say "let's go" on the game over screen instead of "your game is over".
+Added: Menu allowing the player to start the game, change options or quit properly (credits screen too)
+Added: Five difficulty levels
+Added: Sound volume option (music and sfx)
+Tweaked: Ending now plays at same speed on all computers, text tweaked slightly
+Added: Options are now saved
+
+0.3
+===
+Optimised: Code streamlined to remove useless functions and includes
+Extended: High-score function now includes *10* high scores
+Added: The ability to view the highscores directly from the main menu
+Fixed: Press ENTER on the start screen will now no longer start the game
+Added: Can now switch between fullscreen and windowed modes from options menu or key combination (saves it too)
+Added: Nice new graphics courtesy of Amber Adams!
+Added: Particle system for explosions (looks great!)
+Added: Alpha-blended explosions
+Changed: Tracker mods, due to copyright concerns
+Fixed: Menu selection now "wraps around" (so pressing down at the bottom will go back to the top and vice versa)
+Fixed: Added hack to prevent sound cutting out after 7-8 games
+Fixed: No two functions can be assigned to the same key now
+Added: Full-blown system of 35 unlockables (huge!)
+Added: Scrollies introducing a level
+Fixed: Logic now updates at 60fps so smooth graphics are possible
+Fixed: Speed problems with animations and title screen
