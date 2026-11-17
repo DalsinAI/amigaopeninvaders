@@ -185,7 +185,7 @@ void game_ending()
 	
 	// Load and start ending song
 	
-	endingsong=dumb_load_mod_quick("./data/endsong.mod");
+	endingsong=dumb_load_mod_quick("data/endsong.mod");
 	
 	#ifdef ALLEGRO_LINUX
 	if(!endingsong)

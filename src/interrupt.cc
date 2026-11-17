@@ -24,12 +24,12 @@
 
 #include <allegro.h>
 
-#ifdef ALLEGRO_LINUX
+#if defined(ALLEGRO_LINUX) || defined(__amigaos__)
 #include "config.h"
 #include "headers/declare.h"
 #endif
 
-#ifndef ALLEGRO_LINUX
+#if !defined(ALLEGRO_LINUX) && !defined(__amigaos__)
 #include "../include/declare.h"
 #endif
  

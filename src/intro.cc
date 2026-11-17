@@ -106,9 +106,9 @@ void intro_sequence()
 	BITMAP *allegro;
 	BITMAP *linuxlogo;
 
-	jamyskis=load_pcx("./data/jamyskis_logo.pcx", NULL);
-	allegro=load_pcx("./data/allegro_logo.pcx", NULL);
-	linuxlogo=load_pcx("./data/linux.pcx", NULL);
+	jamyskis=load_pcx("data/jamyskis_logo.pcx", NULL);
+	allegro=load_pcx("data/allegro_logo.pcx", NULL);
+	linuxlogo=load_pcx("data/linux.pcx", NULL);
 
 #ifdef ALLEGRO_LINUX
 	if(!jamyskis)
@@ -212,10 +212,10 @@ void title_screen()
 			
 	float percentage=0;
 	
-	titlesong=dumb_load_mod_quick("./data/titlesong.mod");
-	hiscoresong=dumb_load_mod_quick("./data/hiscore.mod");
-	big_hiscore_font=load_font("./data/arcade_font_big.pcx",NULL,NULL);
-	gamefont_trans=load_font("./data/arcade_font.pcx",NULL,NULL);	
+	titlesong=dumb_load_mod_quick("data/titlesong.mod");
+	hiscoresong=dumb_load_mod_quick("data/hiscore.mod");
+	big_hiscore_font=load_font("data/arcade_font_big.pcx",NULL,NULL);
+	gamefont_trans=load_font("data/arcade_font.pcx",NULL,NULL);	
 	
 #ifdef ALLEGRO_LINUX
 	if(!titlesong)

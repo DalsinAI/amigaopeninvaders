@@ -1,0 +1,63 @@
+# Open Invaders for GFOS: 68040, libnix, soft float, C++ (gnu++98, as the
+# 2007 code was written), Allegro 4 from gfopenallegro with its truecolour
+# and aldumb (allegro4.library on acgame.library, both in the drawer's Libs/).
+#   make -f amiga/Makefile.amigaos PREFIX=<stove>/prefix A4=<gfopenallegro/allegro4> A4OUT=.. ACGOUT=..
+PREFIX ?= $(HOME)/AmiCradle/kitchen/stoves/os32-gcc16-open6/prefix
+A4 ?= ../gfopenallegro/allegro4
+A4OUT ?= $(A4)/build-amiga
+ACGOUT ?= ../acgame/build-amiga
+CC = $(PREFIX)/bin/m68k-amigaos-gcc
+CXX = $(PREFIX)/bin/m68k-amigaos-g++
+STRIP = $(PREFIX)/bin/m68k-amigaos-strip
+NAME = OpenInvaders
+BUILD ?= build/amigaos
+DIR = $(BUILD)/$(NAME)
+
+CXXSRCS = main collision ending graphics init input interrupt intro logic sound unlock
+OBJS = $(patsubst %,$(BUILD)/obj/%.o,$(CXXSRCS)) $(BUILD)/obj/pmask.o $(BUILD)/obj/amiga_start.o
+
+SOFT = -specs=$(A4)/specs/m68k-soft-m68040.specs
+BASE = -noixemul -m68040 $(SOFT) -O2 -fomit-frame-pointer -fno-tree-loop-distribute-patterns -w \
+	-Iamiga -I. -I$(A4)/include
+CXXFLAGS = $(BASE) -std=gnu++98
+# libstdc++ (iostream, new) locks through pthreads
+LIBS = $(A4OUT)/liballeg.a -lpthread -lm
+
+all: $(DIR)/$(NAME) package
+
+$(BUILD)/obj/%.o: src/%.cc
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD)/obj/pmask.o: src/pmask.c
+	@mkdir -p $(dir $@)
+	$(CC) $(BASE) -c -o $@ $<
+
+$(BUILD)/obj/amiga_start.o: amiga/amiga_start.c
+	@mkdir -p $(dir $@)
+	$(CC) $(BASE) -c -o $@ $<
+
+$(BUILD)/$(NAME).debug: $(OBJS)
+	$(CXX) -noixemul -m68040 $(SOFT) -o $@ $(OBJS) $(LIBS)
+
+$(DIR)/$(NAME): $(BUILD)/$(NAME).debug
+	@mkdir -p $(DIR)
+	$(STRIP) -o $@ $<
+
+# The drawer: the game, data/ (pictures, sounds, music; hiscore.dat and
+# config.dat are written there), Libs/, the read-mes and the icons.
+package: $(DIR)/$(NAME)
+	mkdir -p $(DIR)/Libs $(DIR)/data
+	cp data/*.pcx data/*.wav data/*.mod $(DIR)/data/
+	cp $(A4OUT)/allegro4.library $(ACGOUT)/acgame.library $(DIR)/Libs/
+	cp amiga/AMIGA_PORT.md $(DIR)/ReadMe
+	cp README $(DIR)/ReadMe-OpenInvaders
+	cp COPYING $(DIR)/COPYING.txt
+	cp amiga/icons/$(NAME).info amiga/icons/ReadMe.info $(DIR)/
+	for f in ReadMe-OpenInvaders COPYING.txt; do cp amiga/icons/ReadMe.info $(DIR)/$$f.info; done
+	cp amiga/icons/$(NAME)-drawer.info $(BUILD)/$(NAME).info
+	cp amiga/Install-$(NAME) amiga/Install-$(NAME).info $(BUILD)/
+
+clean:
+	rm -rf $(BUILD)
+.PHONY: all package clean
